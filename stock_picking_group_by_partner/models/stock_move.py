@@ -32,6 +32,8 @@ class StockMove(models.Model):
             Picking = self.env['stock.picking']
             grouped_moves = groupby(sorted(self, key=lambda m: [f.id for f in m._key_assign_picking()]), key=lambda m: [m._key_assign_picking()])
             for group, moves in grouped_moves:
+                # import wdb
+                # wdb.set_trace()
                 moves = self.env['stock.move'].concat(*list(moves))
                 new_picking = False
                 # Could pass the arguments contained in group but they are the same
@@ -49,10 +51,10 @@ class StockMove(models.Model):
                         })
                 else:
                     new_picking = True
-                    picking = Picking.create(moves._get_new_picking_values())
+                    picking = Picking.create(moves[0]._get_new_picking_values())
 
-                moves.write({'picking_id': picking.id})
-                moves._assign_picking_post_process(new=new_picking)
+                moves[0].write({'picking_id': picking.id})
+                moves[0]._assign_picking_post_process(new=new_picking)
             return True
 
 
