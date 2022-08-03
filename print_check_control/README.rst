@@ -3,8 +3,8 @@ Print Verification
 ==================
 
 .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-   !! This file is intended to be in every module    !!
-   !! to explain why and how it works.               !!
+   !! This module allow the user to have control     !!
+   !! over the printed stock reports.                !!
    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
@@ -21,7 +21,6 @@ Print Verification
 
 |badge1| |badge2| |badge3|
 
-.. !!! Description must be max 2-3 paragraphs, and is required.
 
 This module allow the user to know if a stock transfer operation has been printed or not.
 
@@ -29,8 +28,6 @@ This module allow the user to know if a stock transfer operation has been printe
 
 .. contents::
    :local:
-
-.. !!! Instalation: must only be present if there are very specific installation instructions, such as installing non-python dependencies.The audience is systems administrators. ] To install this module, you need to: !!!
 
 Install
 =======
