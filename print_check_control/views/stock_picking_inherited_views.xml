@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="stock_picking_print_check_tree" model="ir.ui.view">
+        <field name="model">stock.picking</field>
+        <field name="name">stock.picking.inherited.tree.view</field>
+        <field name="inherit_id" ref="stock.vpicktree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='location_dest_id']" position="before">
+                <field name="printed"/>
+            </xpath>
+        </field>
+    </record>
+
+   <record id="stock_picking_print_check_form" model="ir.ui.view">
+        <field name="model">stock.picking</field>
+        <field name="name">stock.picking.inherited.form.view</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='origin']" position="after">
+                <field name="printed"/>
+            </xpath>
+            <xpath expr="//form/header/button[@name='%(stock.action_report_delivery)d']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//form/header/button[@name='do_print_picking']" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('state', 'not in', ('assigned', 'partially_available', 'done','waiting', 'confirmed')), ('is_locked', '=', False)]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
