@@ -55,6 +55,8 @@ Contributors
 * `Calyx Servicios S.A. <https://odoo.calyx-cloud.com.ar/>`_
   
   * Paradiso Cristian
+  
+  * Perez Gabriela
 
 Maintainers
 ~~~~~~~~~~~
