@@ -5,11 +5,11 @@
         This module adds required status to analytic tags field
     """,
     "author": "Calyx Servicios S.A.",
-    "maintainers": ["ParadisoCristian"],
+    "maintainers": ["ParadisoCristian", "PerezGabriela"],
     "website": "http://odoo.calyx-cloud.com.ar/",
     "license": "AGPL-3",
     "category": "Stock",
-    "version": "13.0.1.0.0",
+    "version": "13.0.2.0.0",
     "depends": [
         "stock_analytic"
     ],
