@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="l10n_ar_aeroo_stock.action_aeroo_report_ar_stock_picking" model="ir.actions.report">
-        <!-- modify the fields you want to change here -->
         <field name="report_file">stock_voucher_custom_report/static/src/xml/stock_picking.odt</field>
-        <!-- <xpath expr="//field[@name='report_file']" position="replace">
-            <field name="report_file">stock_voucher_custom_report/static/src/xml/stock_picking.odt</field>
-        </xpath> -->
     </record>
 </odoo>
