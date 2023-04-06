@@ -1,0 +1,38 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* stock_voucher_custom_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-06 14:15+0000\n"
+"PO-Revision-Date: 2023-04-06 14:15+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_voucher_custom_report
+#: code:addons/stock_voucher_custom_report/models/stock_picking.py:14
+#, python-format
+msgid "Before validating please add the CAI or COT number"
+msgstr "Antes de validar porfavor agregue los campos CAI y COT"
+
+#. module: stock_voucher_custom_report
+#: model:ir.model.fields,field_description:stock_voucher_custom_report.field_stock_picking_cai_number
+msgid "CAI Number"
+msgstr "Número CAI"
+
+#. module: stock_voucher_custom_report
+#: model:ir.model.fields,field_description:stock_voucher_custom_report.field_stock_picking_cot_number
+msgid "COT Number"
+msgstr "Número COT"
+
+#. module: stock_voucher_custom_report
+#: model:ir.model,name:stock_voucher_custom_report.model_stock_picking
+msgid "Transfer"
+msgstr "Transferir"
+
