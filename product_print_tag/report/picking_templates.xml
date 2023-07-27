@@ -26,7 +26,9 @@
 			                      <tr style="padding:0px;margin:0px;">
 			                        <td align="center" style="padding-left:0px;padding-right:0px;">
 			                        	<t t-foreach="move_line.product_id.product_template_attribute_value_ids" t-as="attribute">
-			                        		<span t-esc="attribute.name" style="font-size:12px;"/>
+                                            <t t-if="attribute.attribute_id.display_type in ['color', 'size']">
+                                                <span t-esc="attribute.name" style="font-size:12px;"/>
+                                            </t>
 			                        	</t>
 			                        </td>
 			                        <td align="center" style="padding-top:5px;padding-left:0px;padding-right:0px;margin:0px;">
@@ -44,8 +46,10 @@
 			                      <tr style="padding:0px;margin:0px;">
 			                        <td align="center" style="padding-left:0px;padding-right:0px;">
 			                        	<t t-foreach="move_line.product_id.product_template_attribute_value_ids" t-as="attribute">
-			                        	  <span t-esc="attribute.name" style="font-size:12px;"/>
-			                        	</t>
+                                            <t t-if="attribute.attribute_id.display_type in ['color', 'size']">
+                                                <span t-esc="attribute.name" style="font-size:12px;"/>
+                                            </t>
+                                        </t>
 			                        </td>
 			                        <td align="center" style="padding-top:5px;padding-left:0px;padding-right:0px;margin:0px;">
 			                          <t t-if="move_line.product_id.barcode">
@@ -65,6 +69,50 @@
 			            </t>
 			          </t>
 			        </t>
+			      </t>
+			    </div>
+			  </t>
+        </template>
+
+        <template id="product.report_producttemplatebarcode">
+            <t t-call="web.basic_layout">
+			    <div>
+			      <t t-foreach="docs" t-as="templates">
+			        <t t-foreach="templates.product_variant_ids" t-as="variants">
+                        <t t-set="qty" t-value="1"/>
+			            <t t-foreach="range(qty)" t-as="item">
+			              <t t-translation="off">
+			                <div style="display:inline-block;height:50px;margin-right:2px;">
+			                  <table class="table" t-if="templates.product_variant_ids" style="width:120px;height:110px;">
+			                    <tr>
+			                      <th class="text-center" style="font-size:14px;font-weight:bold;height:20px;background:none;padding:0px;border-style:hidden;" colspan="2">
+			                        <span t-esc="templates.default_code"/>
+			                      </th>
+			                    </tr>
+                                <tr style="padding:0px;margin:0px;">
+                                <td align="center" style="padding-left:0px;padding-right:0px;">
+                                    <t t-foreach="variants.product_template_attribute_value_ids" t-as="attribute">
+                                        <t t-if="attribute.attribute_id.display_type in ['color', 'size']">
+                                            <span t-esc="attribute.name" style="font-size:12px;"/>
+                                        </t>
+                                    </t>
+                                </td>
+                                <td align="center" style="padding-top:5px;padding-left:0px;padding-right:0px;margin:0px;">
+                                    <t t-if="variants.barcode">
+                                    <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', variants.barcode, 160, 50)" style="width:160px;height:50px;" alt="Barcode"/>
+                                    <br/>
+                                    <span t-esc="variants.barcode" style="font-size:12px;"/>
+                                    </t>
+                                    <t t-else="">
+                                    <span class="text-muted" style="font-size:12px;">No barcode available</span>
+                                    </t>
+                                </td>
+                                </tr>
+			                  </table>
+			                </div>
+			              </t>
+			            </t>
+			          </t>
 			      </t>
 			    </div>
 			  </t>
