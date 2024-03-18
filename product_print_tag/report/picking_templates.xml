@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <template id="stock.label_transfer_template_view_pdf">
-            <t t-call="web.basic_layout">
+           <t t-call="web.basic_layout">
                 <div>
                     <t t-foreach="docs" t-as="picking">
                         <t t-foreach="picking.move_lines" t-as="move">
@@ -15,62 +15,180 @@
                                 </t>
                                 <t t-foreach="range(qty)" t-as="item">
                                     <t t-translation="off">
-                                        <div style="display:inline-block;height:100%; margin: 0 33px;">
-                                            <table class="table" t-if="picking.move_lines" style="width:100%;height:100%;">
-                                                <tr>
-                                                    <th class="text-center" style="font-size:3rem;font-weight:bold;height:20%;background:none;padding:0px;margin:0px; border-style:hidden;" colspan="2">
-                                                        <span t-esc="move.product_id.default_code"/>
-                                                    </th>
+                                        <div class="" style="width:840px;">
+                                            <table class="table" t-if="picking.move_lines" style="">
+                                              
+                                                <tr style="padding:0px !important;margin:0px !important;border:0px !important; margin-top:16px !important;" >
+                                                  
+                                                  <td class="w-10" style="border:0px;">
+                                                  </td>
+                                                  
+                                                    <td class="text-center w-40" style="font-size:14px;font-weight:bold;line-height:16px;background:none;padding:0px;margin:0px; border:0px;" >
+                                                      <br/>
+                                                      <span t-esc="move.product_id.default_code"/>
+                                                    </td>
+                                                    
+                                                  <td class="w-10" style="border:0px;">
+                                                  </td>
+                                                    
+                                                    <td class="text-center w-40" style="font-size:14px;font-weight:bold;line-height:16px;background:none;padding:0px;margin:0px; border:0px;" >
+                                                      <br/>
+                                                      <span t-esc="move.product_id.default_code"/>
+                                                    </td>
+                                                    
                                                 </tr>
-                                                <t t-if="move_line.product_id.tracking != 'none'">
-                                                    <tr style="padding:0px;margin:0px;">
-                                                        <td align="center" style="padding:0px;">
+                                                
+                                                <t t-if="move_line.product_id.tracking != 'none'"> 
+                                                     <tr style="padding:0px !important;margin:0px !important;border:0px !important" >
+                                                        <td class="w-10" align="center" style="padding:0px; border:0px !important">
                                                             <t t-foreach="move_line.product_id.product_template_attribute_value_ids" t-as="attribute">
-                                                                <t t-if="attribute.attribute_id.display_type == 'size'">
-                                                                    <stron><span t-esc="attribute.name" style="font-size:5rem;"/></stron>
-                                                                </t>
-                                                                <t t-if="attribute.attribute_id.display_type == 'color'">
-                                                                    <stron><span t-esc="attribute.name" style="font-size:2rem;"/></stron>
-                                                                </t>
+                                                                  <t t-if="attribute.attribute_id.display_type == 'size'">
+                                                                      <br/>
+                                                                      <strong><span t-esc="attribute.name" style="font-size:28px;"/></strong>
+                                                                      <br/>
+                                                                  </t>
                                                             </t>
-                                                        </td>
-                                                        <td align="center" style="padding:0px;margin:0px;">
-                                                            <t t-if="move_line.lot_name or move_line.lot_id">
-                                                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', move_line.lot_name, 500, 220)" style="width:500px;height:240px" alt="Barcode"/>
-                                                                <span t-esc="move_line.lot_name or move_line.lot_id.name" style="font-size:3rem;"/>
-                                                            </t>
-                                                            <t t-else="">
-                                                                <span class="text-muted" style="font-size:12px;">No barcode available</span>
-                                                            </t>
-                                                        </td>
-                                                    </tr>
-                                                </t>
-                                                <t t-if="move_line.product_id.tracking == 'none'">
-                                                    <tr style="padding:0px;margin:0px;">
-                                                        <td align="center" style="padding:0px;">
                                                             <t t-foreach="move_line.product_id.product_template_attribute_value_ids" t-as="attribute">
-                                                                <t t-if="attribute.attribute_id.display_type == 'size'">
-                                                                    <stron><span t-esc="attribute.name" style="font-size:4rem;"/></stron>
-                                                                </t>
-                                                                <t t-if="attribute.attribute_id.display_type == 'color'">
-                                                                    <stron><span t-esc="attribute.name" style="font-size:2rem;"/></stron>
-                                                                </t>
+                                                                  <t t-if="attribute.attribute_id.display_type == 'color'">
+                                                                      <strong><span t-esc="attribute.name" style="font-size:24px;"/></strong>
+                                                                  </t>
                                                             </t>
-                                                        </td>
-                                                        <td align="center" style="padding:0px;margin:0px;">
+                                                        </td>    
+                                                        <td class="w-40 text-center" style="border:0px;"> 
                                                             <t t-if="move_line.product_id.barcode">
-                                                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', move_line.product_id.barcode, 500, 220)" style="width:500px;height:220px;" alt="Barcode"/>
-                                                                <br/>
-                                                                <span t-esc="move_line.product_id.barcode" style="font-size:3rem;"/>
+                                                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', move_line.product_id.barcode, 290, 100)" style="width:290px;height:100px;" alt="Barcode"/>
+                                                            </t>
+                                                        </td>
+                                                        <td class="w-10" align="center" style="padding:0px;border:0px; ">
+                                                          <t t-foreach="move_line.product_id.product_template_attribute_value_ids" t-as="attribute">
+                                                            <t t-if="attribute.attribute_id.display_type == 'size'">
+                                                              <br/>
+                                                              <strong><span t-esc="attribute.name" style="font-size:28px;"/></strong>
+                                                              <br/>
+                                                            </t>
+                                                          </t>
+                                                          <t t-foreach="move_line.product_id.product_template_attribute_value_ids" t-as="attribute">
+                                                            <t t-if="attribute.attribute_id.display_type == 'color'">
+                                                              <strong><span t-esc="attribute.name" style="font-size:24px;"/></strong>
+                                                            
+                                                            </t>
+                                                          </t>
+                                                        </td>
+
+                                                        <td class="w-40 text-center" style="border:0px;"> 
+                                                            <t t-if="move_line.product_id.barcode">
+                                                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', move_line.product_id.barcode, 290, 100)" style="width:290px;height:100px;" alt="Barcode"/>
+                                                            </t>
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                    
+                                                    <tr style="padding:0px !important;margin:0px !important;border:0px !important" >
+                                                        <td class="w-10" align="center" style="border:0px;">
+                                                          
+                                                        </td>    
+                                                        <td class="w-40 text-center" style="border:0px;">   
+                                                            <t t-if="move_line.lot_name or move_line.lot_id">
+                                                                <span t-esc="move_line.lot_name or move_line.lot_id.name" style="font-size:2rem;"/>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <span class="text-muted" style="font-size:12px;">No barcode available</span>
+                                                            </t>
+                                                        </td>
+                                                        
+                                                        <td class="w-10" style="border:0px;">
+                                                        </td>
+
+                                                        <td class="w-40 text-center" style="border:0px;"> 
+                                                            <t t-if="move_line.lot_name or move_line.lot_id">
+
+                                                                <span t-esc="move_line.lot_name or move_line.lot_id.name" style="font-size:2rem;"/>
                                                             </t>
                                                             <t t-else="">
                                                                 <span class="text-muted" style="font-size:12px;">No barcode available</span>
                                                             </t>
                                                         </td>
                                                     </tr>
+                                                    
+                                                </t>           
+
+                                                
+                                                
+                                                <t t-if="move_line.product_id.tracking == 'none'">
+                                                    <tr style="padding:0px !important;margin:0px !important;border:0px !important;">
+                                                        <td class="w-10" align="center" style="padding:0px; border:0px !important;">
+                                                            <t t-foreach="move_line.product_id.product_template_attribute_value_ids" t-as="attribute">
+                                                                  <t t-if="attribute.attribute_id.display_type == 'size'">
+                                                                      <br/>
+                                                                      <strong><span t-esc="attribute.name" style="font-size:28px;"/></strong>
+                                                                      <br/>
+                                                                  </t>
+                                                            </t>
+                                                            <t t-foreach="move_line.product_id.product_template_attribute_value_ids" t-as="attribute">
+                                                                  <t t-if="attribute.attribute_id.display_type == 'color'">
+                                                                      <strong><span t-esc="attribute.name" style="font-size:24px;"/></strong>
+                                                                  </t>
+                                                            </t>
+                                                        </td>    
+                                                        <td class="w-40 text-center" style="border:0px;"> 
+                                                            <t t-if="move_line.product_id.barcode">
+                                                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', move_line.product_id.barcode, 290, 100)" style="width:290px;height:100px;" alt="Barcode"/>
+                                                            </t>
+                                                        </td>
+                                                        <td class="w-10" align="center" style="padding:0px;border:0px; ">
+                                                          <t t-foreach="move_line.product_id.product_template_attribute_value_ids" t-as="attribute">
+                                                            <t t-if="attribute.attribute_id.display_type == 'size'">
+                                                              <br/>
+                                                              <strong><span t-esc="attribute.name" style="font-size:28px;"/></strong>
+                                                              <br/>
+                                                            </t>
+                                                          </t>
+                                                          <t t-foreach="move_line.product_id.product_template_attribute_value_ids" t-as="attribute">
+                                                            <t t-if="attribute.attribute_id.display_type == 'color'">
+                                                              <strong><span t-esc="attribute.name" style="font-size:24px;"/></strong>
+                                                            
+                                                            </t>
+                                                          </t>
+                                                        </td>
+
+                                                        <td class="w-40 text-center" style="border:0px;"> 
+                                                            <t t-if="move_line.product_id.barcode">
+                                                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', move_line.product_id.barcode, 290, 100)" style="width:290px;height:100px;" alt="Barcode"/>
+                                                            </t>
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                    
+                                                    <tr style="padding:0px !important;margin:0px !important;border:0px !important" >
+                                                        <td class="w-10" align="center" style="border:0px;">
+                                                          
+                                                        </td>    
+                                                        <td class="w-40 text-center" style="border:0px;">   
+                                                            <t t-if="move_line.product_id.barcode">
+                                                                <span t-esc="move_line.product_id.barcode" style="font-size:12px;"/>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <span class="text-muted" style="font-size:12px;">No barcode available</span>
+                                                            </t>
+                                                        </td>
+                                                        
+                                                        <td class="w-10" style="border:0px;">
+                                                        </td>
+
+                                                        <td class="w-40 text-center" style="border:0px;"> 
+                                                            <t t-if="move_line.product_id.barcode">
+                                                                <span t-esc="move_line.product_id.barcode" style="font-size:12px;"/>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <span class="text-muted" style="font-size:12px;">No barcode available</span>
+                                                            </t>
+                                                        </td>
+                                                    </tr>
+                                                    
                                                 </t>
                                             </table>
                                         </div>
+                                        <p style="page-break-before:always;"> </p>
                                     </t>
                                 </t>
                             </t>
@@ -79,53 +197,6 @@
                 </div>
             </t>
         </template>
-
-
-        <template id="product.report_producttemplatebarcode">
-            <t t-call="web.basic_layout">
-			    <div>
-			      <t t-foreach="docs" t-as="templates">
-			        <t t-foreach="templates.product_variant_ids" t-as="variants">
-                        <t t-set="qty" t-value="1"/>
-			            <t t-foreach="range(qty)" t-as="item">
-			              <t t-translation="off">
-                            <div style="display:inline-block;height:100%; margin: 0 33px;">
-                                <table class="table" t-if="templates.product_variant_ids" style="width:100%;height:100%;">
-                                    <tr>
-                                        <th class="text-center" style="font-size:3rem;font-weight:bold;height:20%;background:none;padding:0px;margin:0px; border-style:hidden;" colspan="2">
-                                            <span t-esc="templates.default_code"/>
-                                        </th>
-                                    </tr>
-                                    <tr style="padding:0px;margin:0px;">
-                                        <td align="center" style="padding:0px;">
-                                            <t t-foreach="variants.product_template_attribute_value_ids" t-as="attribute">
-                                                <t t-if="attribute.attribute_id.display_type == 'size'">
-                                                    <stron><span t-esc="attribute.name" style="font-size:4rem;"/></stron>
-                                                </t>
-                                                <t t-if="attribute.attribute_id.display_type == 'color'">
-                                                    <stron><span t-esc="attribute.name" style="font-size:2rem;"/></stron>
-                                                </t>
-                                            </t>
-                                        </td>
-                                        <td align="center" style="padding:0px;margin:0px;">
-                                            <t t-if="variants.barcode">
-                                            <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', variants.barcode, 500, 220)" style="width:500px;height:220px;" alt="Barcode"/>
-                                            <br/>
-                                            <span t-esc="variants.barcode" style="font-size:3rem;"/>
-                                            </t>
-                                            <t t-else="">
-                                            <span class="text-muted" style="font-size:3rem;">No barcode available</span>
-                                            </t>
-                                        </td>
-                                    </tr>
-			                  </table>
-			                </div>
-			              </t>
-			            </t>
-			          </t>
-			      </t>
-			    </div>
-			  </t>
-        </template>
+        <!--comentario-->
     </data>
 </odoo>
